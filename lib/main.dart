@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movies/constants.dart';
+import 'package:movies/screens/home_screen.dart';
+import 'package:movies/styles/constants.dart';
 import 'package:movies/screens/sidebar.dart';
 
 void main() {
@@ -19,8 +20,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        body: SideBar(),
-        backgroundColor: mainBackgroundColor,
+        body: HomeScreen()
       ),
     );
   }

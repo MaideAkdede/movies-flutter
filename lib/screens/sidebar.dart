@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movies/constants.dart';
+import 'package:movies/partiels/avatar.dart';
+import 'package:movies/styles/constants.dart';
+import 'package:movies/models/data_item.dart';
+import 'package:movies/partiels/menu_item.dart';
 
 class SideBar extends StatefulWidget {
   const SideBar({Key? key}) : super(key: key);
@@ -25,7 +28,42 @@ class _SideBarState extends State<SideBar> {
         child: SafeArea(
           child: Column(
             children: [
-              Menu
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      Avatar(),
+                      SizedBox(
+                        width: verticalSpace*0.8,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Corki'),
+                          Text(
+                            'Junior Dog',
+                            style: fontStyleLegend,
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: verticalSpace*2,
+                  )
+                ],
+              ),
+              MenuItem(menuItemsData[0]),
+              MenuItem(menuItemsData[1]),
+              MenuItem(menuItemsData[2]),
+              Spacer(),
+              Row(
+                children: const [
+                  Icon(Icons.logout, color: Colors.grey),
+                  SizedBox(width: 5),
+                  Text('Se déconnecter', style: fontStyleLegend),
+                ],
+              ),
             ],
           ),
         ),
