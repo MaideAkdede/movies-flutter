@@ -11,18 +11,21 @@ class BurgerMenu extends StatefulWidget {
 class _BurgerMenuState extends State<BurgerMenu> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: boxShadowItem,
-        borderRadius: borderRadiusItem,
-      ),
-      child: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 7, vertical: 14),
-        child: Image(
-          width: 30,
-          height: 14,
-          image: AssetImage('assets/icons/icon-sidebar.png'),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: boxShadowItem,
+          borderRadius: borderRadiusItem,
+        ),
+        child: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 7, vertical: 14),
+          child: Image(
+            width: 30,
+            height: 14,
+            image: AssetImage('assets/icons/icon-sidebar.png'),
+          ),
         ),
       ),
     );

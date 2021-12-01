@@ -6,16 +6,19 @@ class Avatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      clipBehavior: Clip.hardEdge,
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(18)),
-        boxShadow: boxShadowItem,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        clipBehavior: Clip.hardEdge,
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(18)),
+          boxShadow: boxShadowItem,
+        ),
+        child: const Image(
+            image: AssetImage('assets/img/profile.jpg'),
+            width: defaultWidth,
+            height: defaultWidth),
       ),
-      child: const Image(
-          image: AssetImage('assets/img/profile.jpg'),
-          width: defaultWidth,
-          height: defaultWidth),
     );
   }
 }
