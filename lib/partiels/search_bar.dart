@@ -21,7 +21,7 @@ class _SearchBarState extends State<SearchBar> {
             borderRadius: borderRadiusItem,
           ),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 7, vertical: 10),
+            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
             child: Row(
               children: [
                 Icon(Icons.search),

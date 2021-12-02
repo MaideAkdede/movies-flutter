@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movies/partiels/avatar.dart';
 import 'package:movies/styles/constants.dart';
 import 'package:movies/models/data_item.dart';
+import 'package:movies/models/data_item.dart';
 import 'package:movies/partiels/menu_item.dart';
 
 class SideBar extends StatefulWidget {
