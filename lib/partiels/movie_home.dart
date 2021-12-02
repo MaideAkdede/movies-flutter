@@ -1,13 +1,13 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:movies/models/data_movie.dart';
 import '../styles/constants.dart';
 
 class MovieHome extends StatelessWidget {
-
   final MovieData _movieData;
 
-  const MovieHome(this._movieData, {Key? key})
-      : super(key: key);
+  const MovieHome(this._movieData, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +22,16 @@ class MovieHome extends StatelessWidget {
               boxShadow: boxShadowItem,
               borderRadius: borderRadiusItem,
             ),
-            child: _movieData.image,),
-          Text(_movieData.title),
-          Text(_movieData.date),
+            child: _movieData.image,
+          ),
+          Text(
+            _movieData.title,
+            style: fontStyleMovieTitle,
+          ),
+          Text(
+            _movieData.date,
+            style: fontStyleLegend,
+          ),
         ],
       ),
     );

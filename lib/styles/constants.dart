@@ -6,6 +6,25 @@ const fontStyleMenuItems = TextStyle(
   fontWeight: FontWeight.w700,
   fontSize: 18,
 );
+
+const fontStyleMainTitle = TextStyle(
+  fontFamily: "mainFont",
+  fontWeight: FontWeight.w700,
+  fontSize: 22,
+  color: Color(0xFF234E60),
+);
+const fontStyleSecondTitle = TextStyle(
+  fontFamily: "mainFont",
+  fontSize: 18,
+  color: Color(0xFF234E60),
+);
+const fontStyleMovieTitle = TextStyle(
+  fontFamily: "mainFont",
+  fontSize: 16,
+  fontWeight: FontWeight.w500,
+  color: Color(0xFF234E60),
+);
+
 const double horizontalSpace = 16;
 const double verticalSpace = 26;
 const double defaultWidth = 42;

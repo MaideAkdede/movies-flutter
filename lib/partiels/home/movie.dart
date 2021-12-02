@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies/models/data_movie.dart';
+import 'package:movies/styles/constants.dart';
 
 import '../movie_home.dart';
 
@@ -18,8 +19,8 @@ class _MovieShowState extends State<MovieShow> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Films populaires'),
-          Text('Cette semaine'),
+          Text('Films populaires', style : fontStyleMainTitle),
+          Text('Cette semaine', style: fontStyleSecondTitle),
           Row(
             children: [
               MovieHome(moviesData[0]),
