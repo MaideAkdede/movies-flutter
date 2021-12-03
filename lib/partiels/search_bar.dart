@@ -15,6 +15,7 @@ class _SearchBarState extends State<SearchBar> {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
+          height: 45,
           decoration: BoxDecoration(
             color: Colors.white,
             boxShadow: boxShadowItem,
@@ -26,7 +27,11 @@ class _SearchBarState extends State<SearchBar> {
               children: [
                 Icon(Icons.search),
                 Expanded(
-                  child: Text('Rechercher...'),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Rechercher...',
+                    ),
+                  ),
                 ),
                 Icon(Icons.mic),
               ],
