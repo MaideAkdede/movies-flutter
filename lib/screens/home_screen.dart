@@ -1,48 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:movies/partiels/avatar.dart';
-import 'package:movies/partiels/home/movie.dart';
-import 'package:movies/partiels/movie_home.dart';
-import 'package:movies/partiels/navbar/burger_menu.dart';
-import 'package:movies/partiels/search_bar.dart';
-import 'package:movies/models/data_movie.dart';
+import 'package:movies/partials/navbar/nav_bar.dart';
+import 'package:movies/partials/sliders/media_slider.dart';
 import 'package:movies/styles/constants.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomePageState extends State<HomeScreen> {
+  late TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      bottom: false,
+      child: SingleChildScrollView(
         child: Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: BurgerMenu(),
-              ),
-              SearchBar(),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Icon(Icons.notifications),
-              ),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Avatar(),
-              ),
-            ],
-          ),
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const [
+            NavBar(),
+            MediaSlider("Films populaires", "Cette semaine", "movie"),
+            MediaSlider("Séries populaires", "Cette semaine", "tv"),
+            SizedBox(
+              height: kVerticalSpacer * 3,
+            )
+          ],
         ),
-        MovieShow(),
-      ],
-    ));
+      ),
+    );
   }
 }

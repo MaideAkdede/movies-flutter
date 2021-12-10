@@ -17,18 +17,21 @@ class MenuItemData {
 
 List<MenuItemData> menuItemsData = [
   MenuItemData(
-    "Accueil",
-    const Icon(Icons.home),
-    homeLinearGradient,
-  ),
+      "Accueil",
+      const Icon(
+        Icons.home,
+      ),
+      kHomeGradientButton),
   MenuItemData(
-    "Paiement",
-    const Icon(Icons.credit_card),
-    paymentLinearGradient,
-  ),
+      "Paiement",
+      const Icon(
+        Icons.credit_card,
+      ),
+      kPaymentGradientButton),
   MenuItemData(
-    "Settings",
-    const Icon(Icons.settings),
-    settingsLinearGradient,
-  ),
+      "Réglages",
+      const Icon(
+        Icons.settings,
+      ),
+      kSettingsGradientButton),
 ];

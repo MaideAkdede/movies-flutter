@@ -9,13 +9,14 @@ class Avatar extends StatelessWidget {
     return Container(
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(18)),
-        boxShadow: boxShadowItem,
+        borderRadius: BorderRadius.all(Radius.circular(24)),
+        boxShadow: kBoxShadowItem,
       ),
-      child: const Image(
-          image: AssetImage('assets/img/profile.jpg'),
-          width: defaultWidth,
-          height: defaultWidth),
+      child: Image(
+        image: AssetImage('assets/img/profile.jpg'),
+        width: kDefaultWidth,
+        height: kDefaultWidth,
+      ),
     );
   }
 }

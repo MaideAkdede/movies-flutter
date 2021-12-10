@@ -1,55 +1,55 @@
 import 'package:flutter/material.dart';
-import 'package:movies/partiels/avatar.dart';
-import 'package:movies/styles/constants.dart';
+import 'package:flutter/widgets.dart';
 import 'package:movies/models/data_item.dart';
-import 'package:movies/partiels/menu_item.dart';
+import 'package:movies/partials/avatar.dart';
+import 'package:movies/partials/sidebar/menu_item.dart';
 
-class SideBar extends StatefulWidget {
-  const SideBar({Key? key}) : super(key: key);
+import '../styles/constants.dart';
+
+class SidebarScreen extends StatefulWidget {
+  const SidebarScreen({Key? key}) : super(key: key);
 
   @override
-  _SideBarState createState() => _SideBarState();
+  _SidebarScreenState createState() => _SidebarScreenState();
 }
 
-class _SideBarState extends State<SideBar> {
+class _SidebarScreenState extends State<SidebarScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(52),
-          bottomRight: Radius.circular(52),
-        ),
+        borderRadius: BorderRadius.only(bottomRight: Radius.circular(34)),
       ),
-      width: MediaQuery.of(context).size.width * 0.75,
+      width: MediaQuery.of(context).size.width * 0.7,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 34),
         child: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
                 children: [
                   Row(
                     children: [
                       Avatar(),
-                      SizedBox(
-                        width: verticalSpace*0.8,
+                      const SizedBox(
+                        width: kHorizontalSpace,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Corki'),
+                        children: const [
+                          Text("Daniel Schreurs"),
                           Text(
-                            'Junior Dog',
+                            "HEPL - DAM",
                             style: fontStyleLegend,
                           ),
                         ],
                       )
                     ],
                   ),
-                  SizedBox(
-                    height: verticalSpace*2,
+                  const SizedBox(
+                    height: kVerticalSpacer * 2,
                   )
                 ],
               ),
@@ -59,11 +59,17 @@ class _SideBarState extends State<SideBar> {
               Spacer(),
               Row(
                 children: const [
-                  Icon(Icons.logout, color: Colors.grey),
+                  Icon(
+                    Icons.logout,
+                    color: Colors.grey,
+                  ),
                   SizedBox(width: 5),
-                  Text('Se déconnecter', style: fontStyleLegend),
+                  Text(
+                    "Je me déconnecte!",
+                    style: fontStyleLegend,
+                  ),
                 ],
-              ),
+              )
             ],
           ),
         ),

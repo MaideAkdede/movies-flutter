@@ -14,11 +14,11 @@ class _BurgerMenuState extends State<BurgerMenu> {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        boxShadow: boxShadowItem,
-        borderRadius: borderRadiusItem,
+        borderRadius: kBorderRadiusItem,
+        boxShadow: kBoxShadowItem,
       ),
-      child: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 7, vertical: 14),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 11),
         child: Image(
           width: 30,
           height: 14,

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:movies/models/data_item.dart';
-import '../styles/constants.dart';
+import 'package:movies/styles/constants.dart';
 
 class MenuItem extends StatelessWidget {
-
   final MenuItemData _menuItemData;
 
-  const MenuItem(this._menuItemData, {Key? key})
-      : super(key: key);
+  const MenuItem(this._menuItemData, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +14,12 @@ class MenuItem extends StatelessWidget {
         Row(
           children: [
             Container(
+              width: kDefaultWidth,
+              height: kDefaultWidth,
               decoration: BoxDecoration(
-                  gradient: _menuItemData.gradient,
-                  borderRadius: BorderRadius.all(Radius.circular(11))),
+                borderRadius: kBorderRadiusItem,
+                gradient: _menuItemData.gradient,
+              ),
               child: IconButton(
                 icon: _menuItemData.icon,
                 color: Colors.white,
@@ -28,13 +29,16 @@ class MenuItem extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              width: verticalSpace*0.8,
+              width: kHorizontalSpace * 0.8,
             ),
-            Text( _menuItemData.name, style: fontStyleMenuItems),
+            Text(
+              _menuItemData.name,
+              style: kFontStyleMenuItem,
+            ),
           ],
         ),
         SizedBox(
-          height: verticalSpace*0.8,
+          height: kVerticalSpacer,
         )
       ],
     );
