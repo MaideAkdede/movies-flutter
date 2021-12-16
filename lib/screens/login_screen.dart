@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/styles/constants.dart';
-
 import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -15,120 +14,118 @@ class _LoginScreenState extends State<LoginScreen> {
   late String _email;
   late String _password;
 
-  final _auth = FirebaseAuth.instance;
+  final GlobalKey<FormState> _loginFormKey = GlobalKey<FormState>();
+  final _loginFormEmailFieldKey = GlobalKey<FormFieldState>();
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: kHorizontalSpace),
+      padding: const EdgeInsets.all(24),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text('Se Connecter', style: kLargeTitleStyle),
           Container(
-            margin: EdgeInsets.only(top: kVerticalSpacer),
-            padding: EdgeInsets.all(kHorizontalSpace),
+            margin: const EdgeInsets.only(top: kVerticalSpacer * 3),
+            padding: const EdgeInsets.symmetric(
+                horizontal: kHorizontalSpace, vertical: kVerticalSpacer),
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: kBorderRadiusItem,
                 boxShadow: kBoxShadowItem),
-            child: Column(
-              children: [
-                TextField(
-                  onChanged: (text) {
-                    _email = text;
-                  },
-                  decoration: InputDecoration(
-                    //contentPadding: EdgeInsets.all(16),
-                    //isDense: true,
-                    border: InputBorder.none,
-                    icon: Icon(
-                      Icons.mail,
-                      color: kMainTextColor,
-                    ),
-                    hintText: 'Adresse e-mail',
-                    hintStyle: TextStyle(
-                      fontSize: 17,
-                      color: kMainTextColor,
-                    ),
-                  ),
-                ),
-                Divider(
-                  height: kVerticalSpacer,
-                  color: Colors.grey,
-                ),
-                TextField(
-                  onChanged: (text) {
-                    _password = text;
-                  },
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    //contentPadding: EdgeInsets.all(16),
-                    isDense: true,
-                    border: InputBorder.none,
-                    icon: Icon(
-                      Icons.password,
-                      color: kMainTextColor,
-                    ),
-                    hintText: 'Mot de Passe',
-                    hintStyle: TextStyle(
-                      fontSize: 17,
-                      color: kMainTextColor,
+            child: Form(
+              key: _loginFormKey,
+              child: Column(
+                children: [
+                  TextFormField(
+                    key: _loginFormEmailFieldKey,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'L’adresse mail est obligatoire.';
+                      }
+                      return null;
+                    },
+                    onChanged: (text) {
+                      _email = text;
+                    },
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      icon: Icon(
+                        Icons.mail,
+                        color: kMainTextColor,
+                      ),
+                      isDense: true,
+                      hintText: 'Adresse e-mail',
+                      hintStyle: TextStyle(
+                        fontSize: 17,
+                        color: kMainTextColor,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                  Divider(
+                    color: kMainTextColor,
+                    height: kVerticalSpacer * 2,
+                  ),
+                  TextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Le mot de passe est obligatoire.';
+                      }
+                      if (value.length < 9) {
+                        return 'Le mot de passe doit être supérieur à 9 caractères';
+                      }
+                      return null;
+                    },
+                    onChanged: (text) {
+                      _password = text;
+                    },
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      icon: Icon(
+                        Icons.password,
+                        color: kMainTextColor,
+                      ),
+                      isDense: true,
+                      hintText: 'Mot de Passe',
+                      hintStyle: TextStyle(
+                        fontSize: 17,
+                        color: kMainTextColor,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              if (_password != '' && _email != '') {
-                try {
-                  _auth.signInWithEmailAndPassword(
-                      email: _email, password: _password);
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => HomeScreen()));
-                } on FirebaseAuthException catch (err) {
-                  if (err.code == "user-not-found") {
-                    _auth
-                        .createUserWithEmailAndPassword(
-                            email: _email, password: _password)
-                        .then((user) {
-                      user.user!.sendEmailVerification();
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomeScreen()));
-                    });
-                  }
-                }
-              }
-            },
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: kHorizontalSpace,
-                        vertical: kVerticalSpacer),
-                    margin: EdgeInsets.only(top: kVerticalSpacer),
-                    decoration: BoxDecoration(
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  margin: EdgeInsets.only(top: kVerticalSpacer),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      print('Gesture Tap');
+                      if (_loginFormKey.currentState!.validate()) {
+                        // Process data.
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(shape: new RoundedRectangleBorder(
                       borderRadius: kBorderRadiusItem,
-                      boxShadow: kBoxShadowItem,
-                      color: Colors.white,
-                    ),
-                    child: Text(
-                      'Me connecter',
-                      style: kTitleSection,
-                      textAlign: TextAlign.center,
+                    ),),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Text(
+                        'Me connecter',
+                        style: kTitleSection,
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),
