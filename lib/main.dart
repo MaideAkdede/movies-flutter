@@ -1,7 +1,10 @@
 import 'package:movies/screens/login_screen.dart';
+import 'package:movies/screens/single-media.dart';
 import 'package:movies/styles/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +29,7 @@ class MyApp extends StatelessWidget {
       ),
       home: const Scaffold(
         backgroundColor: kMainBackgroundColor,
-        body: LoginScreen(),
+        body: HomeScreen(),
       ),
     );
   }

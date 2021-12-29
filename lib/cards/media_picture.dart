@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:movies/styles/constants.dart';
 
 class MediaPicture extends StatelessWidget {
+
   final String _moviePath;
 
   const MediaPicture(this._moviePath, {Key? key}) : super(key: key);

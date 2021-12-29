@@ -11,18 +11,23 @@ class BurgerMenu extends StatefulWidget {
 class _BurgerMenuState extends State<BurgerMenu> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: kBorderRadiusItem,
-        boxShadow: kBoxShadowItem,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 11),
-        child: Image(
-          width: 30,
-          height: 14,
-          image: AssetImage('assets/icons/icon-sidebar.png'),
+    return GestureDetector(
+      onTap: () {
+        Scaffold.of(context).openDrawer();
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: kBorderRadiusItem,
+          boxShadow: kBoxShadowItem,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 11),
+          child: Image(
+            width: 30,
+            height: 14,
+            image: AssetImage('assets/icons/icon-sidebar.png'),
+          ),
         ),
       ),
     );

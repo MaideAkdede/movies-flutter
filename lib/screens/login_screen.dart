@@ -1,7 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:movies/partials/buttons/button.dart';
 import 'package:movies/styles/constants.dart';
-import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -20,14 +19,14 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text('Se Connecter', style: kLargeTitleStyle),
           Container(
-            margin: const EdgeInsets.only(top: kVerticalSpacer * 3),
+            margin: const EdgeInsets.only(top: kVerticalSpacer),
             padding: const EdgeInsets.symmetric(
                 horizontal: kHorizontalSpace, vertical: kVerticalSpacer),
             decoration: BoxDecoration(
@@ -100,33 +99,23 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
-                child: Container(
-                  margin: EdgeInsets.only(top: kVerticalSpacer),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      print('Gesture Tap');
-                      if (_loginFormKey.currentState!.validate()) {
-                        // Process data.
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(shape: new RoundedRectangleBorder(
-                      borderRadius: kBorderRadiusItem,
-                    ),),
-                    child: Padding(
-                      padding: const EdgeInsets.all(12),
-                      child: Text(
-                        'Me connecter',
-                        style: kTitleSection,
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-                ),
+              TextButton(
+                onPressed: () {
+                  Text('register');
+                },
+                child: const Text("Créer un compte"),
+              ),
+              TextButton(
+                onPressed: () {
+                  print('mot de passe oublié');
+                },
+                child: const Text("Mot de passe oublié"),
               ),
             ],
           ),
+          Button('Se Connecter'),
         ],
       ),
     );
